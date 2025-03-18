@@ -1,5 +1,7 @@
 # Amigo Secreto
 
+O site está disponível para ser acessado em: <https://dddantas.github.io/one-alura-amigo-secreto/>
+
 ## Descrição
 
 Este é um projeto de Amigo Secreto desenvolvido como parte do programa ONE da Alura. O objetivo do projeto é permitir que os usuários adicionem amigos a uma lista e sorteiem um amigo secreto de forma aleatória.
