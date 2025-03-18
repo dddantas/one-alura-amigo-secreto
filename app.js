@@ -47,7 +47,7 @@ function atualizarLista() {
 function atualizarListaDeSorteados() {
   let lista = document.getElementById('resultado');
   lista.innerHTML = '';
-  lista.innerHTML = amigos.map((amigo) => `<li>${amigo}</li>`).join('');
+  lista.innerHTML = amigosSorteados.map((amigo) => `<li>${amigo}</li>`).join('');
 }
 
 function adicionarAmigo() {
