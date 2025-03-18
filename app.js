@@ -1,4 +1,5 @@
 let amigos = [];
+let amigosSorteados = [];
 
 /*
 Atalho para console.log() porque eu quero.
@@ -38,6 +39,17 @@ function mostrarToast(aviso, t) {
   }, 3000);
 }
 
+function atualizarLista() {
+  let lista = document.getElementById('listaAmigos');
+  lista.innerHTML = '';
+  lista.innerHTML = amigos.map((amigo) => `<li>${amigo}</li>`).join('');
+}
+function atualizarListaDeSorteados() {
+  let lista = document.getElementById('resultado');
+  lista.innerHTML = '';
+  lista.innerHTML = amigos.map((amigo) => `<li>${amigo}</li>`).join('');
+}
+
 function adicionarAmigo() {
   // log('adicionar amigo', { nomeAmigo });
 
@@ -54,8 +66,17 @@ function adicionarAmigo() {
 
   log(amigos);
   mostrarToast(`${nomeAmigo} adicionado à lista de amigos para sorteio!`, 'success');
+  atualizarLista();
 }
 
 function sortearAmigo() {
-  console.log('sortear amigo');
+   if (amigos.length <= 0) {
+    mostrarToast('Adicione um(a) amigo(a) primeiro!');
+    return;
+   }
+   
+  let indiceSorteado = Math.floor(Math.random() * amigos.length);
+  amigoSorteado = amigos[indiceSorteado];
+
+  atualizarListaDeSorteados();
 }
