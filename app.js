@@ -9,20 +9,33 @@ function log(...params) {
 }
 
 /*
-Mensagem de aviso ao usuário a partir do id 'aviso-input-nome'
+Mensagem de aviso ao usuário a partir utilizando toast.
+- aviso: mensagem em texto que aparecerá no toast
+- t (tipo):
+  - `success` para confirmações de sucesso
+  - `error` para avisos de erro
 */
-function avisarUsuario(aviso) {
-  let elementoAvisoUsuario = document.getElementById('aviso-input-nome');
+function mostrarToast(aviso, t) {
+  let tipo = t ? t : 'error';
+  let toastContainer = document.getElementById('toast-container');
+  let toast = document.createElement('div');
+  toast.className = `toast toast-${tipo}`;
+  toast.innerText = aviso;
 
-  // se não houver aviso, remove o texto e deixa o elemento invisível
-  if (!aviso) {
-    elementoAvisoUsuario.style.visibility = 'hidden';
-    elementoAvisoUsuario.innerText = '';
-    return;
-  }
+  toastContainer.appendChild(toast);
 
-  elementoAvisoUsuario.style.visibility = 'visible';
-  elementoAvisoUsuario.innerText = aviso;
+  // Mostra o toast
+  setTimeout(() => {
+    toast.classList.add('show');
+  }, 100);
+
+  // Esconde o toast depois de 3 segundos
+  setTimeout(() => {
+    toast.classList.remove('show');
+    toast.addEventListener('transitionend', () => {
+      toast.remove();
+    });
+  }, 3000);
 }
 
 function adicionarAmigo() {
@@ -31,18 +44,18 @@ function adicionarAmigo() {
   let inputAmigo = document.getElementById('amigo');
   let nomeAmigo = String(inputAmigo.value);
   if (nomeAmigo.replace(' ', '') === '') {
-    avisarUsuario('Insira o nome do amigo que participará do sorteio');
+    mostrarToast('Insira o nome do amigo que participará do sorteio');
     return;
   }
 
-  avisarUsuario();
   amigos.push(nomeAmigo);
   inputAmigo.value = '';
   inputAmigo.focus();
+
   log(amigos);
+  mostrarToast(`${nomeAmigo} adicionado à lista de amigos para sorteio!`, 'success');
 }
 
 function sortearAmigo() {
-  avisarUsuario();
   console.log('sortear amigo');
 }

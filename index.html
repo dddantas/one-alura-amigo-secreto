@@ -19,7 +19,6 @@
         
         <section class="input-section">
             <h2 class="section-title">Digite o nome dos seus amigos</h2>
-            <p id="aviso-input-nome" class="input-warning"></p>
             <div class="input-wrapper">
                 <input type="text" id="amigo" class="input-name" placeholder="Digite um nome">
                 <button class="button-add" onclick="adicionarAmigo()">Adicionar</button>
@@ -36,6 +35,9 @@
             </div>
         </section>
     </main>
+
+    <!-- Toast para avisos e mensagens de erro -->
+    <div id="toast-container" class="toast-container"></div>
 
     <script src="app.js" defer></script>
 </body>
