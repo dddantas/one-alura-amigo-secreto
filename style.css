@@ -87,6 +87,13 @@ body {
     font-size: 16px;
 }
 
+/* Aviso caso haja um erro no input de nome */
+.input-warning {
+    font-size: 16px;
+    color: var(--color-button);
+    visibility: hidden;
+}
+
 .button-container {
     width: 300px;
     justify-content: center;
