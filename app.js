@@ -47,7 +47,9 @@ function atualizarLista() {
 function atualizarListaDeSorteados() {
   let lista = document.getElementById('resultado');
   lista.innerHTML = '';
-  lista.innerHTML = amigosSorteados.map((amigo) => `<li>${amigo}</li>`).join('');
+  lista.innerHTML = amigosSorteados
+    .map((amigo) => `<li>${amigo}</li>`)
+    .join('');
 }
 
 function adicionarAmigo() {
@@ -65,16 +67,19 @@ function adicionarAmigo() {
   inputAmigo.focus();
 
   log(amigos);
-  mostrarToast(`${nomeAmigo} adicionado à lista de amigos para sorteio!`, 'success');
+  mostrarToast(
+    `${nomeAmigo} adicionado à lista de amigos para sorteio!`,
+    'success'
+  );
   atualizarLista();
 }
 
 function sortearAmigo() {
-   if (amigos.length <= 0) {
+  if (amigos.length <= 0) {
     mostrarToast('Adicione um(a) amigo(a) primeiro!');
     return;
-   }
-   
+  }
+
   let indiceSorteado = Math.floor(Math.random() * amigos.length);
   amigoSorteado = amigos[indiceSorteado];
 
